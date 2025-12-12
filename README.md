@@ -1,2 +1,34 @@
-# eleot
-Smart Observation Tool (ELEOT) is a web app for teachers and supervisors to evaluate classroom environments, record data, describe lessons, and assess learning using AI-powered recommendations. Exports results in CSV or Word. Supports Arabic &amp; English.
+# مجلد الصور - Images Folder
+
+## الملفات المطلوبة
+
+يرجى وضع الصور التالية في هذا المجلد:
+
+1. **eleot-ratings-guide.jpg** - دليل تقييم ELEOT 2.0
+2. **eleot-tool.jpg** - أداة ELEOT 2.0
+3. **environment-a.jpg** - البيئة A: التعلم العادل
+4. **environment-b.jpg** - البيئة B: التوقعات العالية
+5. **environment-c.jpg** - البيئة C: التعلم الداعم
+6. **environment-d.jpg** - البيئة D: التعلم النشط
+7. **environment-e.jpg** - البيئة E: مراقبة التقدم والملاحظات
+8. **environment-f.jpg** - البيئة F: الإدارة الجيدة
+9. **environment-g.jpg** - البيئة G: التعلم الرقمي
+
+## ملاحظات
+
+- يجب أن تكون أسماء الملفات مطابقة تماماً للأسماء المذكورة أعلاه
+- الصيغ المدعومة: JPG, JPEG, PNG
+- يُفضل أن لا يتجاوز حجم كل صورة 2-3 MB
+- بعد إضافة الصور، أعد تحميل الإضافة من `chrome://extensions/`
+
+
+
+
+
+
+
+
+
+
+
+

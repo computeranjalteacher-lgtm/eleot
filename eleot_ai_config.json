@@ -1,0 +1,256 @@
+{
+  "app_name": "Smart Observation Tool (ELEOT)",
+  "version": "2.0",
+  "supported_languages": ["ar", "en"],
+  
+  "administrative_fields": {
+    "date": { "label_ar": "التاريخ", "label_en": "Date", "type": "date" },
+    "time_in": { "label_ar": "وقت الدخول", "label_en": "Time In", "type": "time" },
+    "time_out": { "label_ar": "وقت الخروج", "label_en": "Time Out", "type": "time" },
+    "school": { "label_ar": "المدرسة", "label_en": "School", "type": "text" },
+    "city": { "label_ar": "المدينة", "label_en": "City", "type": "text" },
+    "state_province": { "label_ar": "الولاية/المحافظة", "label_en": "State/Province", "type": "text" },
+    "country": { "label_ar": "الدولة", "label_en": "Country", "type": "text" },
+    "grade_levels": { "label_ar": "الصفوف", "label_en": "Grade Levels", "type": "text" },
+    "lesson_beg": { "label_ar": "بداية الحصة", "label_en": "Lesson Beg", "type": "time" },
+    "lesson_mid": { "label_ar": "منتصف الحصة", "label_en": "Lesson Mid", "type": "time" },
+    "lesson_end": { "label_ar": "نهاية الحصة", "label_en": "Lesson End", "type": "time" },
+    "subject_observed": { "label_ar": "المادة المراقبة", "label_en": "Subject Observed", "type": "text" },
+    "observer": { "label_ar": "المشرف", "label_en": "Observer", "type": "text" }
+  },
+  
+  "eleot_sections": [
+    {
+      "id": "A",
+      "label_ar": "بيئة التعلم العادلة",
+      "label_en": "Equitable Learning Environment",
+      "criteria": [
+        {
+          "id": "A1",
+          "label_ar": "المتعلمون يشاركون في فرص وأنشطة تعلم متمايزة تلبي احتياجاتهم",
+          "label_en": "Learners engage in differentiated learning opportunities and/or activities that meet their needs"
+        },
+        {
+          "id": "A2",
+          "label_ar": "المتعلمون لديهم وصول متساوٍ للمناقشات والأنشطة والموارد والتكنولوجيا والدعم",
+          "label_en": "Learners have equal access to classroom discussions, activities, resources, technology, and support"
+        },
+        {
+          "id": "A3",
+          "label_ar": "المتعلمون يُعاملون بطريقة عادلة وواضحة ومتسقة",
+          "label_en": "Learners are treated in a fair, clear and consistent manner"
+        },
+        {
+          "id": "A4",
+          "label_ar": "المتعلمون يظهرون و/أو لديهم فرص لتطوير التعاطف/الاحترام/التقدير للاختلافات في القدرات والمواهب والخلفيات والثقافات و/أو الخصائص والظروف والتصرفات البشرية الأخرى",
+          "label_en": "Learners demonstrate and/or have opportunities to develop empathy/respect/appreciation for differences in abilities, aptitudes, backgrounds, cultures, and/or other human characteristics, conditions and dispositions"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "label_ar": "بيئة التوقعات العالية",
+      "label_en": "High Expectations Environment",
+      "criteria": [
+        {
+          "id": "B1",
+          "label_ar": "المتعلمون يسعون للوفاء أو قادرون على التعبير عن التوقعات العالية التي وضعوها بأنفسهم و/أو المعلم",
+          "label_en": "Learners strive to meet or are able to articulate the high expectations established by themselves and/or the teacher"
+        },
+        {
+          "id": "B2",
+          "label_ar": "المتعلمون يشاركون في أنشطة وتعلم صعبة ولكن قابلة للتحقيق",
+          "label_en": "Learners engage in activities and learning that are challenging but attainable"
+        },
+        {
+          "id": "B3",
+          "label_ar": "المتعلمون يظهرون و/أو قادرون على وصف عمل عالي الجودة",
+          "label_en": "Learners demonstrate and/or are able to describe high quality work"
+        },
+        {
+          "id": "B4",
+          "label_ar": "المتعلمون يشاركون في أعمال دراسية ومناقشات و/أو مهام صارمة تتطلب استخدام التفكير عالي المستوى (مثل التحليل والتطبيق والتقييم والتركيب)",
+          "label_en": "Learners engage in rigorous coursework, discussions, and/or tasks that require the use of higher order thinking (e.g., analyzing, applying, evaluating, synthesizing)"
+        },
+        {
+          "id": "B5",
+          "label_ar": "المتعلمون يتحملون المسؤولية ويكونون موجهين ذاتياً في تعلمهم",
+          "label_en": "Learners take responsibility for and are self-directed in their learning"
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "label_ar": "بيئة التعلم الداعمة",
+      "label_en": "Supportive Learning Environment",
+      "criteria": [
+        {
+          "id": "C1",
+          "label_ar": "المتعلمون يظهرون إحساساً بالمجتمع إيجابي ومتماسك ومشارك وهادف",
+          "label_en": "Learners demonstrate a sense of community that is positive, cohesive, engaged, and purposeful"
+        },
+        {
+          "id": "C2",
+          "label_ar": "المتعلمون يخاطرون في التعلم (بدون خوف من ردود فعل سلبية)",
+          "label_en": "Learners take risks in learning (without fear of negative feedback)"
+        },
+        {
+          "id": "C3",
+          "label_ar": "المتعلمون مدعومون من المعلم وأقرانهم و/أو موارد أخرى لفهم المحتوى وإنجاز المهام",
+          "label_en": "Learners are supported by the teacher, their peers and/or other resources to understand content and accomplish tasks"
+        },
+        {
+          "id": "C4",
+          "label_ar": "المتعلمون يظهرون علاقة ودية وداعمة مع معلمهم",
+          "label_en": "Learners demonstrate a congenial and supportive relationship with their teacher"
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "label_ar": "بيئة التعلم النشط",
+      "label_en": "Active Learning Environment",
+      "criteria": [
+        {
+          "id": "D1",
+          "label_ar": "مناقشات/حوارات/تبادلات المتعلمين مع بعضهم البعض والمعلم تسود",
+          "label_en": "Learners' discussions/dialogues/exchanges with each other and the teacher predominate"
+        },
+        {
+          "id": "D2",
+          "label_ar": "المتعلمون يربطون المحتوى بتجارب الحياة الحقيقية",
+          "label_en": "Learners make connections from content to real-life experiences"
+        },
+        {
+          "id": "D3",
+          "label_ar": "المتعلمون منخرطون بنشاط في أنشطة التعلم",
+          "label_en": "Learners are actively engaged in the learning activities"
+        },
+        {
+          "id": "D4",
+          "label_ar": "المتعلمون يتعاونون مع أقرانهم لإنجاز/إكمال المشاريع والأنشطة والمهام و/أو الواجبات",
+          "label_en": "Learners collaborate with their peers to accomplish/complete projects, activities, tasks and/or assignments"
+        }
+      ]
+    },
+    {
+      "id": "E",
+      "label_ar": "بيئة متابعة التقدم والملاحظات",
+      "label_en": "Progress Monitoring and Feedback Environment",
+      "criteria": [
+        {
+          "id": "E1",
+          "label_ar": "المتعلمون يراقبون تقدم تعلمهم أو لديهم آليات يتم من خلالها مراقبة تقدم تعلمهم",
+          "label_en": "Learners monitor their own learning progress or have mechanisms whereby their learning progress is monitored"
+        },
+        {
+          "id": "E2",
+          "label_ar": "المتعلمون يتلقون/يستجيبون للملاحظات (من المعلمين/الأقران/موارد أخرى) لتحسين الفهم و/أو المراجعة",
+          "label_en": "Learners receive/respond to feedback (from teachers/peers/other resources) to improve understanding and/or revise"
+        },
+        {
+          "id": "E3",
+          "label_ar": "المتعلمون يظهرون و/أو يعبرون شفهياً عن فهم الدرس/المحتوى",
+          "label_en": "Learners demonstrate and/or verbalize understanding of the lesson/content"
+        },
+        {
+          "id": "E4",
+          "label_ar": "المتعلمون يفهمون و/أو قادرون على شرح كيفية تقييم عملهم",
+          "label_en": "Learners understand and/or are able to explain how their work is assessed"
+        }
+      ]
+    },
+    {
+      "id": "F",
+      "label_ar": "بيئة التعلم المدارة جيداً",
+      "label_en": "Well-Managed Learning Environment",
+      "criteria": [
+        {
+          "id": "F1",
+          "label_ar": "المتعلمون يتحدثون ويتفاعلون باحترام مع المعلم(ين) ومع بعضهم البعض",
+          "label_en": "Learners speak and interact respectfully with teacher(s) and each other"
+        },
+        {
+          "id": "F2",
+          "label_ar": "المتعلمون يظهرون معرفة و/أو يتبعون قواعد الفصل وتوقعات السلوك ويعملون بشكل جيد مع الآخرين",
+          "label_en": "Learners demonstrate knowledge of and/or follow classroom rules and behavioral expectations and work well with others"
+        },
+        {
+          "id": "F3",
+          "label_ar": "المتعلمون ينتقلون بسلاسة وكفاءة من نشاط إلى آخر",
+          "label_en": "Learners transition smoothly and efficiently from one activity to another"
+        },
+        {
+          "id": "F4",
+          "label_ar": "المتعلمون يستخدمون وقت الفصل بشكل هادف مع الحد الأدنى من الوقت الضائع أو الاضطرابات",
+          "label_en": "Learners use class time purposefully with minimal wasted time or disruptions"
+        }
+      ]
+    },
+    {
+      "id": "G",
+      "label_ar": "بيئة التعلم الرقمي",
+      "label_en": "Digital Learning Environment",
+      "criteria": [
+        {
+          "id": "G1",
+          "label_ar": "المتعلمون يستخدمون أدوات/تكنولوجيا رقمية لجمع وتقييم و/أو استخدام المعلومات للتعلم",
+          "label_en": "Learners use digital tools/technology to gather, evaluate, and/or use information for learning"
+        },
+        {
+          "id": "G2",
+          "label_ar": "المتعلمون يستخدمون أدوات/تكنولوجيا رقمية لإجراء البحوث وحل المشكلات و/أو إنشاء أعمال أصلية للتعلم",
+          "label_en": "Learners use digital tools/technology to conduct research, solve problems, and/or create original works for learning"
+        },
+        {
+          "id": "G3",
+          "label_ar": "المتعلمون يستخدمون أدوات/تكنولوجيا رقمية للتواصل و/أو العمل التعاوني للتعلم",
+          "label_en": "Learners use digital tools/technology to communicate and/or work collaboratively for learning"
+        }
+      ]
+    }
+  ],
+  
+  "rating_scale": {
+    "4": {
+      "ar": "دليل قوي ومتكرر وواضح عبر الحصة",
+      "en": "Very Evident (4)"
+    },
+    "3": {
+      "ar": "دليل واضح لكنه محدود أو غير متكرر",
+      "en": "Evident (3)"
+    },
+    "2": {
+      "ar": "دليل ضعيف أو غير مكتمل",
+      "en": "Somewhat Evident (2)"
+    },
+    "1": {
+      "ar": "لا يوجد دليل مرصود",
+      "en": "Not Observed (1)"
+    }
+  },
+  
+  "system_prompt": {
+    "text": "### ROLE & PERSONA\n\nYou are an expert Educational Supervisor and Instructional Leader specialized in Gifted Education. Your tone is professional, formal, objective, and constructive. You are evaluating a lesson based on the ELEOT observation tool.\n\n\n\n### CORE DIRECTIVES\n\n1. **INPUT INTEGRITY:** You will receive a list of indicators with scores (4, 3, 2, or 1). You must NOT change, round, or reinterpret these scores. The user's input is FINAL.\n\n2. **LANGUAGE STRICTNESS:**\n   - If the input indicators are in Arabic, the ENTIRE output must be in Arabic.\n   - If the input indicators are in English, the ENTIRE output must be in English.\n   - Never mix languages.\n\n\n\n---\n\n\n\n### SECTION 1: JUSTIFICATIONS (Per Indicator)\n\nFor each indicator provided, you must generate a justification sentence based STRICTLY on the assigned score.\n\n\n\n**Format Guidelines:**\n\n- Replace `{indicator_text}` with the provided indicator description.\n\n- Ensure grammatical correctness when inserting the `{indicator_text}` into the template.\n\n\n\n**ARABIC LOGIC:**\n\n- **Score 4:** \"لوحظ بوضوح تحقق: '{indicator_text}'، حيث كان متوافقاً تماماً مع الممارسات المرصودة.\"\n\n- **Score 3:** \"لوحظ تحقق نسبي لـ: '{indicator_text}'، ولكنه لم يشمل جميع المتعلمين بشكل متسق.\"\n\n- **Score 2:** \"ظهر أن تطبيق: '{indicator_text}' كان محدوداً ولم يلبِّ كافة احتياجات المتعلمين.\"\n\n- **Score 1:** \"لوحظ غياب واضح لـ: '{indicator_text}' أثناء مجريات الحصة.\"\n\n\n\n**ENGLISH LOGIC:**\n\n- **Score 4:** \"It was clearly evident that: '{indicator_text}', fully aligned with the observed practice.\"\n\n- **Score 3:** \"There was partial evidence of: '{indicator_text}' but not consistently for all learners.\"\n\n- **Score 2:** \"Evidence of '{indicator_text}' was limited and did not meet all learner needs.\"\n\n- **Score 1:** \"There was a clear absence of: '{indicator_text}' in the observed lesson.\"\n\n\n\n---\n\n\n\n### SECTION 2: RECOMMENDATIONS (Mandatory)\n\nYou must append a final section titled \"**التوصيات**\" (if Arabic) or \"**Recommendations**\" (if English).\n\n*IMPORTANT:* Use HTML formatting for the title to make it green: `<h3 style=\"color:green;\">التوصيات</h3>` or `<h3 style=\"color:green;\">Recommendations</h3>`.\n\n\n\n**Content Requirements:**\n\n1. **Appreciation:** Start with a professional message of thanks and appreciation to the teacher.\n\n2. **Strengths:** Mention the key gains and strengths of the lesson (based on indicators scored 3 or 4).\n\n3. **Development Plan (Conditional):**\n   - **IF** scores are 4 or 3 ONLY: Do NOT offer suggestions for improvement.\n   - **IF** scores contain 2 or 1: Provide targeted, actionable suggestions ONLY for those specific indicators.\n   - **CONSTRAINT:** NEVER use the words \"تحسين\" (Improvement) or \"Weakness\". Use positive framing like \"Development opportunities\" or \"لتعزيز الممارسة\" (To enhance the practice).\n\n\n\n---\n\n\n\n### OUTPUT FORMAT FOR THE CHROME EXTENSION\n\nYour output MUST be valid JSON with this EXACT structure:\n\n{\n  \"recommendations\": \"HTML-formatted section with green title. Must include: appreciation message, strengths (from scores 3-4), and development plan (only if scores 2 or 1 exist). Use <h3 style='color:green;'>التوصيات</h3> or <h3 style='color:green;'>Recommendations</h3>\",\n  \"criteria\": [\n    {\n      \"id\": \"A1\",\n      \"score\": 4,\n      \"justification\": \"MUST use the dynamic template above with exact indicator text inserted into {indicator_text}\",\n      \"improvement\": \"\"\n    },\n    {\n      \"id\": \"A2\",\n      \"score\": 2,\n      \"justification\": \"MUST use the dynamic template above with exact indicator text inserted into {indicator_text}\",\n      \"improvement\": \"\"\n    }\n  ],\n  \"totalScore\": 3.5\n}\n\n\n\nCRITICAL RULES:\n\n1. Use the exact justification templates provided above based on score (1-4)\n\n2. Insert the exact indicator text into {indicator_text} in the template\n\n3. Recommendations section MUST include HTML green title\n\n4. Never use words \"تحسين\" or \"Weakness\" - use positive framing\n\n5. Development suggestions ONLY appear if scores 2 or 1 exist\n\n6. All output must be 100% in the same language as input indicators\n\n\n\n---\n\n\n\nYour responses must always reflect the mindset of a real expert evaluator specialized in Gifted Education."
+  },
+  
+  "user_prompt_template": {
+    "text": "Analyze the following lesson description using the complete ELEOT framework.\n\nLanguage required: {{language}}\nAdministrative data: {{admin_data}}\n\nLesson Description:\n{{lesson_description}}\n\n--------------------------------------------\n\nALL ELEOT INDICATORS - USE EXACT TEXT FROM BELOW:\n\n--------------------------------------------\n\nA1 (AR): المتعلمون يشاركون في فرص وأنشطة تعلم متمايزة تلبي احتياجاتهم\nA1 (EN): Learners engage in differentiated learning opportunities and/or activities that meet their needs\n\nA2 (AR): المتعلمون لديهم وصول متساوٍ للمناقشات والأنشطة والموارد والتكنولوجيا والدعم\nA2 (EN): Learners have equal access to classroom discussions, activities, resources, technology, and support\n\nA3 (AR): المتعلمون يُعاملون بطريقة عادلة وواضحة ومتسقة\nA3 (EN): Learners are treated in a fair, clear and consistent manner\n\nA4 (AR): المتعلمون يظهرون و/أو لديهم فرص لتطوير التعاطف/الاحترام/التقدير للاختلافات في القدرات والمواهب والخلفيات والثقافات و/أو الخصائص والظروف والتصرفات البشرية الأخرى\nA4 (EN): Learners demonstrate and/or have opportunities to develop empathy/respect/appreciation for differences in abilities, aptitudes, backgrounds, cultures, and/or other human characteristics, conditions and dispositions\n\nB1 (AR): المتعلمون يسعون للوفاء أو قادرون على التعبير عن التوقعات العالية التي وضعوها بأنفسهم و/أو المعلم\nB1 (EN): Learners strive to meet or are able to articulate the high expectations established by themselves and/or the teacher\n\nB2 (AR): المتعلمون يشاركون في أنشطة وتعلم صعبة ولكن قابلة للتحقيق\nB2 (EN): Learners engage in activities and learning that are challenging but attainable\n\nB3 (AR): المتعلمون يظهرون و/أو قادرون على وصف عمل عالي الجودة\nB3 (EN): Learners demonstrate and/or are able to describe high quality work\n\nB4 (AR): المتعلمون يشاركون في أعمال دراسية ومناقشات و/أو مهام صارمة تتطلب استخدام التفكير عالي المستوى (مثل التحليل والتطبيق والتقييم والتركيب)\nB4 (EN): Learners engage in rigorous coursework, discussions, and/or tasks that require the use of higher order thinking (e.g., analyzing, applying, evaluating, synthesizing)\n\nB5 (AR): المتعلمون يتحملون المسؤولية ويكونون موجهين ذاتياً في تعلمهم\nB5 (EN): Learners take responsibility for and are self-directed in their learning\n\nC1 (AR): المتعلمون يظهرون إحساساً بالمجتمع إيجابي ومتماسك ومشارك وهادف\nC1 (EN): Learners demonstrate a sense of community that is positive, cohesive, engaged, and purposeful\n\nC2 (AR): المتعلمون يخاطرون في التعلم (بدون خوف من ردود فعل سلبية)\nC2 (EN): Learners take risks in learning (without fear of negative feedback)\n\nC3 (AR): المتعلمون مدعومون من المعلم وأقرانهم و/أو موارد أخرى لفهم المحتوى وإنجاز المهام\nC3 (EN): Learners are supported by the teacher, their peers and/or other resources to understand content and accomplish tasks\n\nC4 (AR): المتعلمون يظهرون علاقة ودية وداعمة مع معلمهم\nC4 (EN): Learners demonstrate a congenial and supportive relationship with their teacher\n\nD1 (AR): مناقشات/حوارات/تبادلات المتعلمين مع بعضهم البعض والمعلم تسود\nD1 (EN): Learners' discussions/dialogues/exchanges with each other and the teacher predominate\n\nD2 (AR): المتعلمون يربطون المحتوى بتجارب الحياة الحقيقية\nD2 (EN): Learners make connections from content to real-life experiences\n\nD3 (AR): المتعلمون منخرطون بنشاط في أنشطة التعلم\nD3 (EN): Learners are actively engaged in the learning activities\n\nD4 (AR): المتعلمون يتعاونون مع أقرانهم لإنجاز/إكمال المشاريع والأنشطة والمهام و/أو الواجبات\nD4 (EN): Learners collaborate with their peers to accomplish/complete projects, activities, tasks and/or assignments\n\nE1 (AR): المتعلمون يراقبون تقدم تعلمهم أو لديهم آليات يتم من خلالها مراقبة تقدم تعلمهم\nE1 (EN): Learners monitor their own learning progress or have mechanisms whereby their learning progress is monitored\n\nE2 (AR): المتعلمون يتلقون/يستجيبون للملاحظات (من المعلمين/الأقران/موارد أخرى) لتحسين الفهم و/أو المراجعة\nE2 (EN): Learners receive/respond to feedback (from teachers/peers/other resources) to improve understanding and/or revise\n\nE3 (AR): المتعلمون يظهرون و/أو يعبرون شفهياً عن فهم الدرس/المحتوى\nE3 (EN): Learners demonstrate and/or verbalize understanding of the lesson/content\n\nE4 (AR): المتعلمون يفهمون و/أو قادرون على شرح كيفية تقييم عملهم\nE4 (EN): Learners understand and/or are able to explain how their work is assessed\n\nF1 (AR): المتعلمون يتحدثون ويتفاعلون باحترام مع المعلم(ين) ومع بعضهم البعض\nF1 (EN): Learners speak and interact respectfully with teacher(s) and each other\n\nF2 (AR): المتعلمون يظهرون معرفة و/أو يتبعون قواعد الفصل وتوقعات السلوك ويعملون بشكل جيد مع الآخرين\nF2 (EN): Learners demonstrate knowledge of and/or follow classroom rules and behavioral expectations and work well with others\n\nF3 (AR): المتعلمون ينتقلون بسلاسة وكفاءة من نشاط إلى آخر\nF3 (EN): Learners transition smoothly and efficiently from one activity to another\n\nF4 (AR): المتعلمون يستخدمون وقت الفصل بشكل هادف مع الحد الأدنى من الوقت الضائع أو الاضطرابات\nF4 (EN): Learners use class time purposefully with minimal wasted time or disruptions\n\nG1 (AR): المتعلمون يستخدمون أدوات/تكنولوجيا رقمية لجمع وتقييم و/أو استخدام المعلومات للتعلم\nG1 (EN): Learners use digital tools/technology to gather, evaluate, and/or use information for learning\n\nG2 (AR): المتعلمون يستخدمون أدوات/تكنولوجيا رقمية لإجراء البحوث وحل المشكلات و/أو إنشاء أعمال أصلية للتعلم\nG2 (EN): Learners use digital tools/technology to conduct research, solve problems, and/or create original works for learning\n\nG3 (AR): المتعلمون يستخدمون أدوات/تكنولوجيا رقمية للتواصل و/أو العمل التعاوني للتعلم\nG3 (EN): Learners use digital tools/technology to communicate and/or work collaboratively for learning\n\n--------------------------------------------\n\nCRITICAL ANALYSIS INSTRUCTIONS:\n\n--------------------------------------------\n\n1. EVIDENCE-BASED SCORING\n\n   - For each criterion, examine ONLY the actual content described in this specific lesson\n   - Base your score on concrete evidence from the text\n   - Never assume or infer beyond what is explicitly described\n   - Assign scores from 1-4 based on evidence\n\n2. APPLY DYNAMIC JUSTIFICATION TEMPLATES - MANDATORY\n\n   For EVERY criterion:\n   - Extract the exact indicator text above (use AR if {{language}} is Arabic, EN if English)\n   - Insert it into '{indicator_text}' in the template from system_prompt matching the score (1-4)\n   - Ensure grammatical correctness when inserting the indicator text\n   - Use the exact templates:\n     * Score 4 (AR): \"لوحظ بوضوح تحقق: '{indicator_text}'، حيث كان متوافقاً تماماً مع الممارسات المرصودة.\"\n     * Score 3 (AR): \"لوحظ تحقق نسبي لـ: '{indicator_text}'، ولكنه لم يشمل جميع المتعلمين بشكل متسق.\"\n     * Score 2 (AR): \"ظهر أن تطبيق: '{indicator_text}' كان محدوداً ولم يلبِّ كافة احتياجات المتعلمين.\"\n     * Score 1 (AR): \"لوحظ غياب واضح لـ: '{indicator_text}' أثناء مجريات الحصة.\"\n     * Score 4 (EN): \"It was clearly evident that: '{indicator_text}', fully aligned with the observed practice.\"\n     * Score 3 (EN): \"There was partial evidence of: '{indicator_text}' but not consistently for all learners.\"\n     * Score 2 (EN): \"Evidence of '{indicator_text}' was limited and did not meet all learner needs.\"\n     * Score 1 (EN): \"There was a clear absence of: '{indicator_text}' in the observed lesson.\"\n\n3. COMPLETE EVALUATION\n\n   - Evaluate ALL 27 criteria across sections A-G\n   - Each criterion must have:\n     * id: The exact criterion ID (A1, A2, B1, etc.)\n     * score: 1-4 based ONLY on evidence from this lesson\n     * justification: MUST use dynamic template with exact indicator text inserted\n     * improvement: Empty string \"\" (not used in new format)\n\n4. RECOMMENDATIONS SECTION - MANDATORY\n\n   - MUST include HTML green title: <h3 style=\"color:green;\">التوصيات</h3> (Arabic) or <h3 style=\"color:green;\">Recommendations</h3> (English)\n   - Content must include:\n     * Appreciation: Professional message of thanks to the teacher\n     * Strengths: Key gains and strengths (based on indicators scored 3 or 4)\n     * Development Plan (Conditional):\n       - IF scores are 4 or 3 ONLY: Do NOT offer suggestions\n       - IF scores contain 2 or 1: Provide targeted, actionable suggestions ONLY for those specific indicators\n       - NEVER use words \"تحسين\" (Improvement) or \"Weakness\"\n       - Use positive framing like \"Development opportunities\" or \"لتعزيز الممارسة\"\n   - Format as HTML with proper structure\n\n5. TOTAL SCORE\n\n   - Calculate the average of all 27 criterion scores\n   - Round to 1 decimal place\n\n--------------------------------------------\n\nOUTPUT REQUIREMENTS:\n\n--------------------------------------------\n\n- Output MUST be valid JSON only (no markdown, no code blocks, no explanations outside JSON)\n- JSON structure:\n  {\n    \"recommendations\": \"HTML-formatted section with green title. Must include: appreciation, strengths, and development plan (if scores 2 or 1 exist). Use <h3 style='color:green;'>التوصيات</h3> or <h3 style='color:green;'>Recommendations</h3>\",\n    \"criteria\": [\n      {\n        \"id\": \"A1\",\n        \"score\": 4,\n        \"justification\": \"MUST use dynamic template with exact indicator text\",\n        \"improvement\": \"\"\n      }\n    ],\n    \"totalScore\": 3.5\n  }\n- All text must be 100% in the same language as {{language}} (never mix languages)\n- Every justification MUST use the exact dynamic template with indicator text\n\n--------------------------------------------\n\nBegin your analysis now. Generate a unique, evidence-based evaluation using the dynamic justification templates for ALL 27 indicators."
+  },
+  
+  "output_format": {
+    "type": "json",
+    "structure": {
+      "recommendations": "Merged section containing appreciation, strengths, and recommendations. Title: 'التوصيات' (Arabic) or 'Recommendations' (English). Include ONLY if scores 1 or 2 exist. Otherwise empty string \"\"",
+      "criteria": [
+        {
+          "id": "A1",
+          "score": 4,
+          "justification": "MUST use dynamic template from system_prompt with exact indicator text inserted into {indicator_text}",
+          "improvement": "Specific improvement suggestion (only if score ≤ 2, otherwise empty string \"\")"
+        }
+      ],
+      "totalScore": 3.5
+    }
+  }
+}

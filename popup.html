@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=700, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Smart Observation Tool (ELEOT)</title>
+  <link rel="stylesheet" href="popup.css">
+  <!-- jsPDF for PDF export (local file - required for Manifest V3 CSP compliance) -->
+  <script src="libs/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <!-- API Settings Screen -->
+  <div id="api-settings-screen" class="screen">
+    <div class="container">
+      <header class="header">
+        <div style="display: flex; align-items: center; justify-content: flex-start; gap: 10px;">
+          <img id="logo-api-screen" alt="Logo" style="height: 50px; width: auto; object-fit: contain;" onerror="this.style.display='none'; console.error('Logo image failed to load');" />
+          <h1 class="title" data-i18n="app_title">Smart Observation Tool (ELEOT)</h1>
+        </div>
+      </header>
+
+      <div class="settings-section">
+        <h2 data-i18n="api_settings_title">إعدادات API</h2>
+        <p class="settings-description" data-i18n="api_settings_desc">يرجى إدخال مفتاح API للذكاء الاصطناعي</p>
+
+        <label for="api-provider" class="label" data-i18n="api_provider">مزود API:</label>
+        <select 
+          id="api-provider" 
+          class="language-select"
+          aria-label="API Provider Selection"
+          aria-required="true"
+          tabindex="0">
+          <option value="openai">ChatGPT (OpenAI)</option>
+          <option value="gemini">Google Gemini</option>
+        </select>
+
+        <!-- API Key Instructions (Dynamic based on provider) -->
+        <div id="api-key-instructions" class="api-key-instructions">
+          <!-- OpenAI Instructions -->
+          <div id="openai-instructions" class="provider-instructions">
+            <p class="instructions-title">
+              <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer" class="api-link">
+                <span data-i18n="get_openai_key">Get OpenAI API Key</span> ↗
+              </a>
+            </p>
+            <ol class="instructions-steps">
+              <li data-i18n="openai_step1">Visit the OpenAI API keys page (link above)</li>
+              <li data-i18n="openai_step2">Sign in or create an OpenAI account</li>
+              <li data-i18n="openai_step3">Click "Create new secret key" and copy the generated key</li>
+              <li data-i18n="openai_step4">Paste the key in the field below</li>
+            </ol>
+          </div>
+          <!-- Gemini Instructions -->
+          <div id="gemini-instructions" class="provider-instructions hidden">
+            <p class="instructions-title">
+              <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" class="api-link">
+                <span data-i18n="get_gemini_key">Get Google Gemini API Key</span> ↗
+              </a>
+            </p>
+            <ol class="instructions-steps">
+              <li data-i18n="gemini_step1">Visit the Google AI Studio API keys page (link above)</li>
+              <li data-i18n="gemini_step2">Sign in with your Google account</li>
+              <li data-i18n="gemini_step3">Click "Create API Key" and copy the generated key</li>
+              <li data-i18n="gemini_step4">Paste the key in the field below</li>
+            </ol>
+          </div>
+        </div>
+
+        <label for="api-key-input" class="label" data-i18n="api_key_label">مفتاح API:</label>
+        <input 
+          type="password" 
+          id="api-key-input" 
+          class="api-key-input" 
+          placeholder="أدخل مفتاح API هنا..."
+          data-i18n-placeholder="api_key_placeholder">
+
+        <label for="api-endpoint-input" class="label" data-i18n="api_endpoint_label">Endpoint (اختياري):</label>
+        <input 
+          type="text" 
+          id="api-endpoint-input" 
+          class="api-key-input" 
+          placeholder="https://api.openai.com/v1/chat/completions"
+          data-i18n-placeholder="api_endpoint_placeholder">
+
+        <div class="settings-buttons">
+          <button id="save-api-btn" type="button" class="evaluate-btn" data-i18n="save_api" aria-label="حفظ مفتاح API">حفظ</button>
+          <button id="skip-api-btn" type="button" class="skip-btn" data-i18n="skip_api" aria-label="تخطي إعدادات API">تخطي (استخدام بيانات تجريبية)</button>
+        </div>
+        
+        <!-- Credits Footer for API Settings Screen -->
+        <div class="credits-footer" style="margin-top: 30px; padding-top: 15px; border-top: 1px solid #ddd; text-align: center; font-size: 10px; color: #666; font-style: italic;" data-i18n="credits_text">
+          حقوق التصميم: قسم الحاسب بمدارس الأنجال- مشرف القسم/ هشام يسن يسري
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Evaluation Screen -->
+  <div id="main-screen" class="screen hidden">
+    <div class="container">
+      <header class="header">
+        <div style="display: flex; align-items: center; gap: 10px; flex: 1;">
+          <img id="logo-main-screen" alt="Logo" style="height: 50px; width: auto; object-fit: contain; order: 0;" onerror="this.style.display='none'; console.error('Logo image failed to load');" />
+          <h1 class="title" data-i18n="app_title" style="flex: 1; margin: 0;">Smart Observation Tool (ELEOT)</h1>
+        </div>
+        <button id="settings-btn" class="settings-btn" title="الإعدادات" data-i18n="settings">⚙️</button>
+      </header>
+
+      <!-- Navigation Tabs -->
+      <nav class="nav-tabs">
+        <button class="nav-tab active" data-tab="evaluation" data-i18n="nav_evaluation">التقييم</button>
+        <button class="nav-tab" data-tab="training" data-i18n="nav_training">تدريب على أداة الملاحظة ELEOT</button>
+      </nav>
+
+      <!-- Evaluation Tab Content -->
+      <div id="evaluation-tab" class="tab-content active">
+      <div class="input-section">
+        <div class="language-toggle-container">
+          <button type="button" id="language-toggle" class="language-toggle" aria-label="Language selector">
+            <span id="language-toggle-text">عربي</span>
+          </button>
+        </div>
+
+        <!-- Administrative Data Section -->
+        <div class="admin-section">
+          <h3 class="section-title" data-i18n="admin_data_title">البيانات الإدارية</h3>
+          <div class="admin-grid">
+            <div class="admin-field">
+              <label for="teacher-name-field" data-i18n="teacher_name">اسم المعلم:</label>
+              <input type="text" id="teacher-name-field" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label for="subject-field" data-i18n="subject">المادة:</label>
+              <input type="text" id="subject-field" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label for="grade-field" data-i18n="grade">الصف:</label>
+              <input type="text" id="grade-field" class="admin-input">
+            </div>
+            <div class="admin-field segment-field">
+              <label data-i18n="segment">الجزء:</label>
+              <div class="segment-checkboxes">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="segment-beginning" value="Beginning">
+                  <span data-i18n="beginning">البداية</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" id="segment-middle" value="Middle">
+                  <span data-i18n="middle">المنتصف</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" id="segment-end" value="End">
+                  <span data-i18n="end">النهاية</span>
+                </label>
+              </div>
+            </div>
+            <div class="admin-field">
+              <label for="date-field" data-i18n="date">التاريخ:</label>
+              <input type="date" id="date-field" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label for="supervisor-name-field" data-i18n="supervisor_name">اسم المشرف:</label>
+              <input type="text" id="supervisor-name-field" class="admin-input">
+            </div>
+            <div class="admin-field environments-field">
+              <label data-i18n="environments_select_label" style="display: block; margin-bottom: 10px; font-weight: 600;">ELEOT Environments to Evaluate:</label>
+              <div class="environments-checkboxes" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px;">
+                <label class="checkbox-label" style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                  <input type="checkbox" id="envA_checkbox" value="A" checked>
+                  <span>A - Equitable Learning (التعلم العادل)</span>
+                </label>
+                <label class="checkbox-label" style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                  <input type="checkbox" id="envB_checkbox" value="B" checked>
+                  <span>B - High Expectations (التوقعات العالية)</span>
+                </label>
+                <label class="checkbox-label" style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                  <input type="checkbox" id="envC_checkbox" value="C" checked>
+                  <span>C - Supportive Learning (التعلم الداعم)</span>
+                </label>
+                <label class="checkbox-label" style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                  <input type="checkbox" id="envD_checkbox" value="D" checked>
+                  <span>D - Active Learning (التعلم النشط)</span>
+                </label>
+                <label class="checkbox-label" style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                  <input type="checkbox" id="envE_checkbox" value="E" checked>
+                  <span>E - Progress Monitoring & Feedback (مراقبة التقدم والتغذية الراجعة)</span>
+                </label>
+                <label class="checkbox-label" style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                  <input type="checkbox" id="envF_checkbox" value="F" checked>
+                  <span>F - Well-Managed Learning (التعلم المُدار جيداً)</span>
+                </label>
+                <label class="checkbox-label" style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                  <input type="checkbox" id="envG_checkbox" value="G" checked>
+                  <span>G - Digital Learning (التعلم الرقمي)</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lesson Description Section -->
+        <div class="lesson-section">
+          <label for="lesson-description" class="label" data-i18n="lesson_description_label">وصف الحصة:</label>
+          <textarea 
+            id="lesson-description" 
+            class="lesson-textarea" 
+            placeholder="أدخل وصف الحصة هنا..."
+            rows="8"
+            aria-label="Lesson description input"
+            aria-required="true"
+            aria-describedby="lesson-description-help"
+            tabindex="0"
+            data-i18n-placeholder="lesson_description_placeholder"></textarea>
+          <small id="lesson-description-help" class="help-text" style="display: block; margin-top: 5px; color: #666; font-size: 12px;" data-i18n="lesson_description_help"></small>
+        </div>
+
+        <!-- Clarification Questions Section -->
+        <div id="clarification-questions-section" class="clarification-section hidden">
+          <h3 class="section-title" style="color: #FF9800; margin-bottom: 15px;">
+            <span data-i18n="clarification_title">❓ أسئلة توضيحية</span>
+          </h3>
+          <p style="color: #666; margin-bottom: 20px; line-height: 1.6;" data-i18n="clarification_description">
+            لضمان دقة التقييم، يرجى الإجابة على الأسئلة التالية:
+          </p>
+          <div id="clarification-questions-list"></div>
+          <div style="margin-top: 20px; display: flex; gap: 10px;">
+            <button id="submit-clarifications-btn" class="evaluate-btn" style="flex: 1;" data-i18n="submit_clarifications">
+              إرسال الإجابات والمتابعة
+            </button>
+            <button id="skip-clarifications-btn" class="clear-btn" style="flex: 1;" data-i18n="skip_clarifications">
+              تخطي والمتابعة
+            </button>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button 
+            id="evaluate-btn" 
+            class="evaluate-btn" 
+            data-i18n="evaluate_button"
+            aria-label="Start evaluation"
+            aria-describedby="evaluate-btn-help"
+            tabindex="0">قيّم</button>
+          <button 
+            id="clear-data-btn" 
+            class="clear-btn" 
+            data-i18n="clear_data"
+            aria-label="Clear all data"
+            tabindex="0">مسح جميع البيانات</button>
+        </div>
+        <div id="evaluate-btn-help" class="sr-only" data-i18n="evaluate_help">
+          اضغط Enter أو Ctrl+Enter لبدء التقييم
+        </div>
+      </div>
+
+      <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+        <p class="loading-text" data-i18n="loading_text">جارٍ تحليل الحصة...</p>
+      </div>
+
+      <div id="error-message" class="error-message hidden" role="alert"></div>
+
+      <div id="results-section" class="results-section hidden">
+        <div class="overall-score-container">
+          <h2 class="overall-score-title" data-i18n="overall_score">النتيجة الإجمالية:</h2>
+          <input type="number" id="overall-score" class="overall-score-value" min="0" max="4" step="0.1" value="0.0" style="text-align: center; border: 2px solid #2196F3; border-radius: 4px; padding: 5px; font-size: 32px; font-weight: 700; width: 100px;">
+          <span class="overall-score-max" data-i18n="out_of_four">/ 4</span>
+        </div>
+
+        <div class="export-buttons">
+          <!-- PDF export button removed as requested -->
+          <button id="export-csv-btn" class="export-btn" data-i18n="export_csv">تصدير CSV</button>
+          <button id="export-word-btn" class="export-btn" data-i18n="export_word">تصدير Word</button>
+        </div>
+
+        <!-- Results by Section -->
+        <div id="results-by-section"></div>
+
+        <!-- Recommendations Section -->
+        <div id="recommendations-section" class="recommendations-section hidden">
+          <h2 class="section-title" data-i18n="recommendations_title">التوصيات</h2>
+          <div id="recommendations-content"></div>
+        </div>
+        
+        <!-- Credits Footer -->
+        <div class="credits-footer" style="margin-top: 30px; padding-top: 15px; border-top: 1px solid #ddd; text-align: center; font-size: 10px; color: #666; font-style: italic;" data-i18n="credits_text">
+          حقوق التصميم: قسم الحاسب بمدارس الأنجال- مشرف القسم/ هشام يسن يسري
+        </div>
+      </div>
+      </div>
+      <!-- End Evaluation Tab Content -->
+
+      <!-- Training Tab Content -->
+      <div id="training-tab" class="tab-content">
+        <div class="training-section">
+          <h2 class="section-title" data-i18n="training_title">تدريب على أداة الملاحظة ELEOT</h2>
+          <p class="training-description" data-i18n="training_description">اختر ملفاً من القائمة أدناه لعرضه</p>
+          
+          <!-- File List -->
+          <div id="training-files-list" class="training-files-list">
+            <!-- Files will be loaded here -->
+          </div>
+
+          <!-- File Viewer -->
+          <div id="file-viewer-container" class="file-viewer-container hidden">
+            <div class="file-viewer-header">
+              <h3 id="file-viewer-title" class="file-viewer-title"></h3>
+              <button id="close-viewer-btn" class="close-viewer-btn" data-i18n="close_viewer">✕ إغلاق</button>
+            </div>
+            <div id="file-viewer-content" class="file-viewer-content">
+              <!-- File content will be loaded here -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Training Tab Content -->
+    </div>
+  </div>
+
+  <script src="utils.js" defer></script>
+  <script src="popup.js" defer></script>
+</body>
+</html>

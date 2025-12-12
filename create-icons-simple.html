@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>إنشاء أيقونات ELEOT</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+      direction: rtl;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #2196F3;
+      text-align: center;
+    }
+    .instructions {
+      background: #e3f2fd;
+      padding: 15px;
+      border-radius: 4px;
+      margin: 20px 0;
+      line-height: 1.8;
+    }
+    button {
+      background: #2196F3;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      margin: 10px 0;
+    }
+    button:hover {
+      background: #1976D2;
+    }
+    canvas {
+      border: 1px solid #ddd;
+      margin: 10px auto;
+      display: block;
+    }
+    .preview {
+      text-align: center;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎨 إنشاء أيقونات ELEOT</h1>
+    
+    <div class="instructions">
+      <strong>الخطوات:</strong><br>
+      1. انقر على الزر أدناه لإنشاء الأيقونات<br>
+      2. سيتم تحميل 3 ملفات تلقائياً<br>
+      3. انسخ الملفات إلى مجلد <code>icons/</code> في مشروعك<br>
+      4. أعد تحميل الإضافة في Chrome
+    </div>
+    
+    <div class="preview">
+      <canvas id="icon128" width="128" height="128"></canvas>
+      <p>معاينة الأيقونة (128x128)</p>
+    </div>
+    
+    <button onclick="createAndDownloadIcons()">📥 إنشاء وتحميل جميع الأيقونات</button>
+    
+    <div id="status" style="margin-top: 20px; text-align: center; color: #4CAF50; font-weight: bold;"></div>
+  </div>
+
+  <script>
+    function drawIcon(canvas, size) {
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, size, size);
+      
+      // خلفية زرقاء
+      ctx.fillStyle = '#2196F3';
+      ctx.fillRect(0, 0, size, size);
+      
+      // حرف E أبيض
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = `bold ${Math.floor(size * 0.6)}px Arial`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('E', size / 2, size / 2);
+    }
+    
+    function downloadCanvas(canvas, filename) {
+      return new Promise((resolve) => {
+        canvas.toBlob(function(blob) {
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+          setTimeout(resolve, 300);
+        }, 'image/png');
+      });
+    }
+    
+    async function createAndDownloadIcons() {
+      const statusDiv = document.getElementById('status');
+      statusDiv.textContent = 'جاري إنشاء الأيقونات...';
+      
+      // إنشاء canvas للأيقونات
+      const sizes = [16, 48, 128];
+      const canvases = {};
+      
+      sizes.forEach(size => {
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        drawIcon(canvas, size);
+        canvases[size] = canvas;
+      });
+      
+      // عرض معاينة
+      const previewCanvas = document.getElementById('icon128');
+      const previewCtx = previewCanvas.getContext('2d');
+      previewCtx.drawImage(canvases[128], 0, 0);
+      
+      // تحميل الملفات
+      try {
+        await downloadCanvas(canvases[128], 'icon128.png');
+        await downloadCanvas(canvases[48], 'icon48.png');
+        await downloadCanvas(canvases[16], 'icon16.png');
+        
+        statusDiv.innerHTML = '✅ تم إنشاء الأيقونات بنجاح!<br><br>الآن:<br>1. انسخ الملفات الثلاثة إلى مجلد <code>icons/</code><br>2. أعد تحميل الإضافة في Chrome';
+        statusDiv.style.color = '#4CAF50';
+      } catch (error) {
+        statusDiv.textContent = '❌ حدث خطأ: ' + error.message;
+        statusDiv.style.color = '#f44336';
+      }
+    }
+    
+    // إنشاء معاينة عند التحميل
+    window.onload = function() {
+      drawIcon(document.getElementById('icon128'), 128);
+    };
+  </script>
+</body>
+</html>
