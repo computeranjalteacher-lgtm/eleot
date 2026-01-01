@@ -1,0 +1,11 @@
+/* Additional app-specific styles */
+.rtl {
+  direction: rtl;
+}
+
+.ltr {
+  direction: ltr;
+}
+
+
+
